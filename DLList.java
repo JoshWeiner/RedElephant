@@ -47,14 +47,14 @@ public class DLList implements List //your List interface must be in same dir
       if ( index < 0 || index >= size() )
   	    throw new IndexOutOfBoundsException();
 
-      LLNode newNode = new LLNode( newVal, null );
+      DLLNode newNode = new DLLNode( newVal, null, null );
 
       //if index==0, insert node before head node
       if ( index == 0 )
   	    add( newVal );
 
       else {
-  	    LLNode tmp = _head; //create alias to head
+  	    DLLNode tmp = _head; //create alias to head
 
   	    //walk to node before desired node
   	    for( int i=0; i < index; i++ )
