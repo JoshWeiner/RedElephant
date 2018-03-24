@@ -5,11 +5,11 @@
  *****************************************************/
 
 public class DLList implements List //your List interface must be in same dir
-{ 
+{
 
     //instance vars
     private DLLNode _head;
-    private DLLNode _tail;  
+    private DLLNode _tail;
     private int _size;
 
     // constructor -- initializes instance vars
@@ -22,48 +22,76 @@ public class DLList implements List //your List interface must be in same dir
 
 
     //--------------v  List interface methods  v--------------
-    
-    public boolean add( String newVal )
-    {
-	if(_size == 0){  //if size is 0, you need to make the _tail and the _head equal to the new node first 
-	    DLLNode tmp = new DLLNode(newVal, null,  _head ); //makes tmp point forwards to _head
-	    _head = tmp; //makes tmp the new _head
-	    _tail = _head; //makes _tail also equal to the same node as _head
-	    _size++;
-	    return true;
-	}
 
-	else{ 
-	    DLLNode tmp = new DLLNode(newVal, null,  _head ); //makes tmp point forwards to _head
-	    _head.setPrevious(tmp); //makes _head point backwards to tmp
-	    _head = tmp; //makes tmp the new _head
-	    _size++;
-	    return true;
-	}
+    public boolean add( String newVal ) {
+      //If list is empty, initialize the first node.
+      //Both head and tail need to be set to this node
+    	if(_size == 0){
+    	    DLLNode tmp = new DLLNode(newVal, null,  _head ); //makes tmp point forwards to _head
+    	    _head = tmp; //makes tmp the new _head
+    	    _tail = _head; //makes _tail also equal to the same node as _head
+        }
 
+    	else{
+    	    DLLNode tmp = new DLLNode(newVal, null,  _head ); //makes tmp point forwards to _head
+    	    _head.setPrevious(tmp); //makes _head point backwards to tmp
+    	    _head = tmp; //makes tmp the new _head
+  	     }
+
+       _size++;
+       return true;
+    }
+
+    public void add( int index, String newVal ) {
+
+      if ( index < 0 || index >= size() )
+  	    throw new IndexOutOfBoundsException();
+
+      LLNode newNode = new LLNode( newVal, null );
+
+      //if index==0, insert node before head node
+      if ( index == 0 )
+  	    add( newVal );
+
+      else {
+  	    LLNode tmp = _head; //create alias to head
+
+  	    //walk to node before desired node
+  	    for( int i=0; i < index; i++ )
+          tmp = tmp.getNext();
+
+  	    //insert new node at index
+  	    newNode.setNext(tmp);
+        //sets newNode's bacwards reference to the backwards reference of the node previously at that index
+        newNode.setPrevious(tmp.getPrevious());
+        //sets the node once at that index's backwards reference to the new node
+  	    tmp.setPrevious( newNode );
+
+        //increment size attribute
+  	    _size++;
+      }
     }
 
     public boolean addEnd(String newVal){
-
-	if(_size == 0){ //if size is 0, you need to make _head point to the same new node as _tail
-	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
-	    _tail = tmp; //makes tmp the new _tail
-	    _head = _tail; //makes _head also equal to _tail
-	    _size++;
-	    return true;
-	}
-	else{
-	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
-	    _tail.setNext(tmp); //makes _tail point forwards to tmp
-	    _tail = tmp; //makes tmp the new _tail
-	    _size++;
-	    return true;
-	}
+    	if(_size == 0){ //if size is 0, you need to make _head point to the same new node as _tail
+    	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
+    	    _tail = tmp; //makes tmp the new _tail
+    	    _head = _tail; //makes _head also equal to _tail
+    	    _size++;
+    	    return true;
+    	}
+    	else{
+    	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
+    	    _tail.setNext(tmp); //makes _tail point forwards to tmp
+    	    _tail = tmp; //makes tmp the new _tail
+    	    _size++;
+    	    return true;
+    	}
 
     }
 
-  
-    
+
+
     public String get( int index )
     {
 	if ( index < 0 || index >= size() )
@@ -107,37 +135,6 @@ public class DLList implements List //your List interface must be in same dir
 
     //return number of nodes in list
     public int size() { return _size; }
-    
-
-    //insert a node containing newVal at position index
-    public void add( int index, String newVal ) {
-
-	if ( index < 0 || index >= size() )
-	    throw new IndexOutOfBoundsException();
-
-	DLLNode newNode = new DLLNode(newVal, null, null );
-
-	//if index==0, insert node before head node
-	if ( index == 0 ) 
-	    add( newVal );
-	else {
-	    DLLNode tmp = _head; //create alias to head
-
-	    //walk to node before desired node
-	    for( int i=0; i < index-1; i++ )
-		{
-		    tmp = tmp.getNext();
-		}
-
-	    //insert new node
-	    newNode.setNext( tmp.getNext() );
-	    newNode.setPrevious(tmp.getPrevious());
-	    tmp.setNext( newNode );
-
-	    //increment size attribute
-	    _size++;
-	}
-    }
 
 
 
@@ -157,18 +154,19 @@ public class DLList implements List //your List interface must be in same dir
 	    retVal = _head.getCargo();
 
 	    //remove target node
-	    _head = _head.getNext();	    
+	    _head = _head.getNext();
 	}
 	else {
 	    //walk to node before desired node
-	    for( int i=0; i < index-1; i++ )
-		tmp = tmp.getNext();
+	    for( int i=0; i < index; i++ )
+		    tmp = tmp.getNext();
 
 	    //check target node's cargo hold
-	    retVal = tmp.getNext().getCargo();
+	    retVal = tmp.getCargo();
 
 	    //remove target node
-	    tmp.setNext( tmp.getNext().getNext() );
+      tmp.getPrevious().setNext(tmp.getNext());
+      tmp.getNext().setPrevious(tmp.getPrevious());
 	}
 
 	//decrement size attribute
@@ -251,7 +249,7 @@ public class DLList implements List //your List interface must be in same dir
 	  System.out.println( "...after add(4,phat): " );
 	  System.out.println( james );
 
-	  System.out.println( "...after remove last: " 
+	  System.out.println( "...after remove last: "
 	  + james.remove( james._size-1) );
 	  System.out.println( james );
 
@@ -268,5 +266,3 @@ public class DLList implements List //your List interface must be in same dir
     }
 
 }//end class DLList
-
-
