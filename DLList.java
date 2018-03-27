@@ -1,7 +1,7 @@
 //Joshua Weiner
 /*****************************************************
- * class DLList
- * Implements a linked list of DDLLNodes, each containing String data
+ * class DLList<T>
+ * Implements a linked list of DDLLNode<T>s, each containing String data
  * new in v2: add-at-index, remove
  *****************************************************/
 
@@ -9,12 +9,12 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 {
 
     //instance vars
-    private DLLNode _head;
-    private DLLNode _tail;
+    private DLLNode<T> _head;
+    private DLLNode<T> _tail;
     private int _size;
 
     // constructor -- initializes instance vars
-    public DLList( )
+    public DLList<T>()
     {
 	_head = null; //at birth, a list has no elements
 	_tail = null;
@@ -28,13 +28,13 @@ public class DLList<T> implements List<T> //your List interface must be in same 
       //If list is empty, initialize the first node.
       //Both head and tail need to be set to this node
     	if(_size == 0){
-    	    DLLNode tmp = new DLLNode(newVal, null,  _head ); //makes tmp point forwards to _head
+    	    DLLNode<T> tmp = new DLLNode<T>(newVal, null,  _head ); //makes tmp point forwards to _head
     	    _head = tmp; //makes tmp the new _head
     	    _tail = _head; //makes _tail also equal to the same node as _head
         }
 
     	else{
-    	    DLLNode tmp = new DLLNode(newVal, null,  _head ); //makes tmp point forwards to _head
+    	    DLLNode<T> tmp = new DLLNode<T>(newVal, null,  _head ); //makes tmp point forwards to _head
     	    _head.setPrevious(tmp); //makes _head point backwards to tmp
     	    _head = tmp; //makes tmp the new _head
   	     }
@@ -48,7 +48,7 @@ public class DLList<T> implements List<T> //your List interface must be in same 
       if ( index < 0 || index >= size() )
   	    throw new IndexOutOfBoundsException();
 
-      DLLNode newNode = new DLLNode( newVal, null, null );
+      DLLNode<T> newNode = new DLLNode<T>( newVal, null, null );
 
       //if index==0, insert node before head node
       if ( index == 0 ){
@@ -56,7 +56,7 @@ public class DLList<T> implements List<T> //your List interface must be in same 
   	}
 
       else {
-  	    DLLNode tmp = _head; //create alias to head
+  	    DLLNode<T> tmp = _head; //create alias to head
 
 
   	    //walk to node before desired node
@@ -81,14 +81,14 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 
     public boolean addEnd (T newVal){
     	if(_size == 0){ //if size is 0, you need to make _head point to the same new node as _tail
-    	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
+    	    DLLNode<T> tmp = new DLLNode<T>(newVal, _tail, null); //makes tmp point backwards to _tail
     	    _tail = tmp; //makes tmp the new _tail
     	    _head = _tail; //makes _head also equal to _tail
     	    _size++;
     	    return true;
     	}
     	else{
-    	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
+    	    DLLNode<T> tmp = new DLLNode<T>(newVal, _tail, null); //makes tmp point backwards to _tail
     	    _tail.setNext(tmp); //makes _tail point forwards to tmp
     	    _tail = tmp; //makes tmp the new _tail
     	    _size++;
@@ -104,8 +104,13 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
+<<<<<<< HEAD
+	String retVal;
+	DLLNode<T> tmp = _head; //create alias to head
+=======
 	T retVal;
 	DLLNode tmp = _head; //create alias to head
+>>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 
 	//walk to desired node
 	for( int i=0; i < index; i++ )
@@ -123,7 +128,7 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-	DLLNode tmp = _head; //create alias to head
+	DLLNode<T> tmp = _head; //create alias to head
 
 	//walk to desired node
 	for( int i=0; i < index; i++ )
@@ -152,8 +157,13 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
+<<<<<<< HEAD
+	String retVal;
+	DLLNode<T> tmp = _head; //create alias to head
+=======
 	T retVal;
 	DLLNode tmp = _head; //create alias to head
+>>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 
 	//if index==0, remove head node
 	if ( index == 0 ) {
@@ -189,7 +199,7 @@ public class DLList<T> implements List<T> //your List interface must be in same 
     public String toString()
     {
 	String retStr = "HEAD <-> ";
-	DLLNode tmp = _head; //init tr
+	DLLNode<T> tmp = _head; //init tr
 	while( tmp != null ) {
 	    retStr += tmp.getCargo() + " <-> ";
 	    tmp = tmp.getNext();
@@ -203,7 +213,7 @@ public class DLList<T> implements List<T> //your List interface must be in same 
     public static void main( String[] args )
     {
 
-	DLList james = new DLList();
+	DLList<String> james = new DLList<String>();
 
 	System.out.println( james );
 	System.out.println("Size before adding: " + james.size());
@@ -239,4 +249,4 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 
     }
 
-}//end class DLList
+}//end class DLList<T>

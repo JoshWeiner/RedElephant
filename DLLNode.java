@@ -5,6 +5,17 @@
  * Stores its data as a String
  *****************************************************/
 
+<<<<<<< HEAD
+public class DLLNode<T>
+{
+    //instance vars
+    private T _cargo;    //cargo may only be of type String
+    private DLLNode _nextNode; //pointer to next DLLNode
+    private DLLNode _previousNode; 
+
+    // constructor -- initializes instance vars
+    public DLLNode( T value, DLLNode previous, DLLNode next ) {
+=======
 public class DLLNode<T><T>
 {
     //instance vars
@@ -14,6 +25,7 @@ public class DLLNode<T><T>
 
     // constructor -- initializes instance vars
     public DLLNode<T><T>( T value, DLLNode<T><T> previous, DLLNode<T><T> next ) {
+>>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 	_cargo = value;
 	_nextNode = next;
 	_previousNode = previous;
@@ -53,7 +65,7 @@ public class DLLNode<T><T>
 
 
     // override inherited toString
-    public String toString() { return _cargo; }
+    public String toString() { return _cargo.toString(); }
 
 
     //main method for testing
@@ -63,6 +75,18 @@ public class DLLNode<T><T>
 	//Below is an exercise in creating a linked list...
 
 	//Create a node
+<<<<<<< HEAD
+	DLLNode<String> first = new DLLNode<String>( "cat", null, null );
+
+	//Create a new node after the first
+	first.setNext( new DLLNode<String>( "dog", null, null ) );
+
+	//Create a third node after the second
+	first.getNext().setNext( new DLLNode<String>( "cow", null, null ) );
+
+
+	DLLNode<String> tmp = first;
+=======
 	DLLNode<T> first = new DLLNode<T>( "cat", null, null );
 
 	//Create a new node after the first
@@ -73,6 +97,7 @@ public class DLLNode<T><T>
 
 
 	DLLNode<T> tmp = first;
+>>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 	while( tmp != null ) {
 	    System.out.println( tmp );
 	    tmp = tmp.getNext();
@@ -81,6 +106,18 @@ public class DLLNode<T><T>
 	System.out.println("====================");
 
 	//Create a node
+<<<<<<< HEAD
+	DLLNode<String> last = new DLLNode<String>( "cat", null, null );
+
+
+	last.setPrevious( new DLLNode<String>( "dog", null, null ) );
+
+
+	last.getPrevious().setPrevious(new DLLNode<String>("bear", null, null));
+
+
+	DLLNode<String> tmp0 = last;
+=======
 	DLLNode<T> last = new DLLNode<T>( "cat", null, null );
 
 
@@ -91,6 +128,7 @@ public class DLLNode<T><T>
 
 
 	DLLNode<T> tmp0 = last;
+>>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 	while( tmp0 != null ) {
 	    System.out.println( tmp0 );
 	    tmp0 = tmp0.getPrevious();

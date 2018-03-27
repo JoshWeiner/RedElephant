@@ -6,6 +6,18 @@
  *****************************************************/
 
 public interface List<T>
+<<<<<<< HEAD
+{ 
+
+    //add node to list, containing input String as its data
+    public boolean add( T x ); 
+
+    //return data in element at position i
+    public T get( int i ); 
+
+    //overwrite data in element at position i
+    public T set( int i, T x ); 
+=======
 {
 
     //add node to list, containing input String as its data
@@ -16,6 +28,7 @@ public interface List<T>
 
     //overwrite data in element at position i
     public T set( int i,T x );
+>>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 
     //return length of list
     public int size();
