@@ -1,4 +1,8 @@
-//Joshua Weiner
+/*
+Alvin Ye and Joshua Weiner - Red Elephant
+APCS2 - pd08
+HW
+2018 - 03 - 26
 /*****************************************************
  * class DLList<T>
  * Implements a linked list of DDLLNode<T>s, each containing String data
@@ -14,7 +18,7 @@ public class DLList<T> implements List<T> //your List interface must be in same 
     private int _size;
 
     // constructor -- initializes instance vars
-    public DLList<T>()
+    public DLList()
     {
 	_head = null; //at birth, a list has no elements
 	_tail = null;
@@ -104,13 +108,8 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-<<<<<<< HEAD
-	String retVal;
-	DLLNode<T> tmp = _head; //create alias to head
-=======
 	T retVal;
-	DLLNode tmp = _head; //create alias to head
->>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
+	DLLNode<T> tmp = _head; //create alias to head
 
 	//walk to desired node
 	for( int i=0; i < index; i++ )
@@ -157,13 +156,9 @@ public class DLList<T> implements List<T> //your List interface must be in same 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-<<<<<<< HEAD
-	String retVal;
-	DLLNode<T> tmp = _head; //create alias to head
-=======
+
 	T retVal;
-	DLLNode tmp = _head; //create alias to head
->>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
+	DLLNode<T> tmp = _head; //create alias to head
 
 	//if index==0, remove head node
 	if ( index == 0 ) {

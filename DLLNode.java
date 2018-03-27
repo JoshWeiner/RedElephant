@@ -1,4 +1,8 @@
-//Joshua Weiner
+/*
+Alvin Ye and Joshua Weiner - Red Elephant
+APCS2 - pd08
+HW
+2018 - 03 - 26
 /*****************************************************
  * class DLLNode<T>
  * Implements a node, for use in lists and other container classes.

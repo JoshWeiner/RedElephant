@@ -1,3 +1,8 @@
+/*
+Alvin Ye and Joshua Weiner - Red Elephant
+APCS2 - pd08
+HW
+2018 - 03 - 26
 /*****************************************************
  * class LList
  * Implements a linked list of LLNodes, each containing String data
@@ -8,7 +13,7 @@ public class LList<E> implements List //your List interface must be in same dir
 {
 
   //instance vars
-  private LLNode _head;
+  private LLNode<E> _head;
   private int _size;
 
   // constructor -- initializes instance vars
@@ -21,22 +26,22 @@ public class LList<E> implements List //your List interface must be in same dir
 
   //--------------v  List interface methods  v--------------
 
-  public boolean add( String newVal )
+  public boolean add( E newVal )
   {
-    LLNode tmp = new LLNode( newVal, _head );
+    LLNode<E> tmp = new LLNode( newVal, _head );
     _head = tmp;
     _size++;
     return true;
   }
 
 
-  public String get( int index )
+  public E get( int index )
   {
     if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-    String retVal;
-    LLNode tmp = _head; //create alias to head
+    E retVal;
+    LLNode<E> tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
@@ -48,20 +53,20 @@ public class LList<E> implements List //your List interface must be in same dir
   }
 
 
-  public String set( int index, String newVal )
+  public E set( int index, E newVal )
   {
 
     if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-    LLNode tmp = _head; //create alias to head
+    LLNode<E> tmp = _head; //create alias to head
 
     //walk to desired node
     for( int i=0; i < index; i++ )
 	    tmp = tmp.getNext();
 
     //store target node's cargo
-    String oldVal = tmp.getCargo();
+    E oldVal = tmp.getCargo();
 
     //modify target node's cargo
     tmp.setCargo( newVal );
@@ -75,18 +80,18 @@ public class LList<E> implements List //your List interface must be in same dir
 
 
   //insert a node containing newVal at position index
-  public void add( int index, String newVal ) {
+  public void add( int index, E newVal ) {
 
     if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-    LLNode newNode = new LLNode( newVal, null );
+    LLNode<E> newNode = new LLNode( newVal, null );
 
     //if index==0, insert node before head node
     if ( index == 0 )
 	    add( newVal );
     else {
-	    LLNode tmp = _head; //create alias to head
+	    LLNode<E> tmp = _head; //create alias to head
 
 	    //walk to node before desired node
 	    for( int i=0; i < index-1; i++ )
@@ -103,13 +108,13 @@ public class LList<E> implements List //your List interface must be in same dir
 
 
   //remove node at pos index, return its cargo
-  public String remove( int index ) {
+  public E remove( int index ) {
 
     if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-    String retVal;
-    LLNode tmp = _head; //create alias to head
+    E retVal;
+    LLNode<E> tmp = _head; //create alias to head
 
     //if index==0, remove head node
     if ( index == 0 ) {
@@ -144,7 +149,7 @@ public class LList<E> implements List //your List interface must be in same dir
   public String toString()
   {
     String retStr = "HEAD->";
-    LLNode tmp = _head; //init tr
+    LLNode<E> tmp = _head; //init tr
     while( tmp != null ) {
 	    retStr += tmp.getCargo() + "->";
 	    tmp = tmp.getNext();
@@ -158,7 +163,7 @@ public class LList<E> implements List //your List interface must be in same dir
   public static void main( String[] args )
   {
 
-    LList james = new LList();
+    LList<String> james = new LList<String>();
 
     System.out.println( james );
     System.out.println( "size: " + james.size() );
