@@ -1,10 +1,11 @@
+//Joshua Weiner
 /*****************************************************
  * class DLList
  * Implements a linked list of DDLLNodes, each containing String data
  * new in v2: add-at-index, remove
  *****************************************************/
 
-public class DLList implements List //your List interface must be in same dir
+public class DLList<T> implements List<T> //your List interface must be in same dir
 {
 
     //instance vars
@@ -23,7 +24,7 @@ public class DLList implements List //your List interface must be in same dir
 
     //--------------v  List interface methods  v--------------
 
-    public boolean add( String newVal ) {
+    public boolean add( T newVal ) {
       //If list is empty, initialize the first node.
       //Both head and tail need to be set to this node
     	if(_size == 0){
@@ -42,7 +43,7 @@ public class DLList implements List //your List interface must be in same dir
        return true;
     }
 
-    public void add( int index, String newVal ) {
+    public void add( int index, T newVal ) {
 
       if ( index < 0 || index >= size() )
   	    throw new IndexOutOfBoundsException();
@@ -62,13 +63,13 @@ public class DLList implements List //your List interface must be in same dir
   	    for( int i=0; i < index - 1; i++ ){
   	    	tmp = tmp.getNext();
   	    }
-          
+
 
   	    //insert new node at index
   	    newNode.setNext(tmp.getNext()); //makes newNode point forwards to node next to tmp
-        
+
         newNode.setPrevious(tmp); //makes newNode point backwards to tmp
-        
+
   	    tmp.setNext( newNode ); //makes tmp point forwards to newNode
 
   	    tmp.getNext().getNext().setPrevious(newNode); //makes the node that used to be in front of tmp point backwards to newNode
@@ -78,7 +79,7 @@ public class DLList implements List //your List interface must be in same dir
       }
     }
 
-    public boolean addEnd(String newVal){
+    public boolean addEnd (T newVal){
     	if(_size == 0){ //if size is 0, you need to make _head point to the same new node as _tail
     	    DLLNode tmp = new DLLNode(newVal, _tail, null); //makes tmp point backwards to _tail
     	    _tail = tmp; //makes tmp the new _tail
@@ -98,12 +99,12 @@ public class DLList implements List //your List interface must be in same dir
 
 
 
-    public String get( int index )
+    public T get( int index )
     {
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-	String retVal;
+	T retVal;
 	DLLNode tmp = _head; //create alias to head
 
 	//walk to desired node
@@ -116,7 +117,7 @@ public class DLList implements List //your List interface must be in same dir
     }
 
 
-    public String set( int index, String newVal )
+    public T set( int index, T newVal )
     {
 
 	if ( index < 0 || index >= size() )
@@ -129,7 +130,7 @@ public class DLList implements List //your List interface must be in same dir
 	    tmp = tmp.getNext();
 
 	//store target node's cargo
-	String oldVal = tmp.getCargo();
+	T oldVal = tmp.getCargo();
 
 	//modify target node's cargo
 	tmp.setCargo( newVal );
@@ -146,12 +147,12 @@ public class DLList implements List //your List interface must be in same dir
 
 
     //remove node at pos index, return its cargo
-    public String remove( int index ) {
+    public T remove( int index ) {
 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-	String retVal;
+	T retVal;
 	DLLNode tmp = _head; //create alias to head
 
 	//if index==0, remove head node

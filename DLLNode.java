@@ -1,18 +1,19 @@
+//Joshua Weiner
 /*****************************************************
- * class DLLNode
+ * class DLLNode<T>
  * Implements a node, for use in lists and other container classes.
  * Stores its data as a String
  *****************************************************/
 
-public class DLLNode
+public class DLLNode<T><T>
 {
     //instance vars
-    private String _cargo;    //cargo may only be of type String
-    private DLLNode _nextNode; //pointer to next DLLNode
-    private DLLNode _previousNode; 
+    private T _cargo;    //cargo may only be of type String
+    private DLLNode<T><T> _nextNode; //pointer to next DLLNode<T>
+    private DLLNode<T><T> _previousNode;
 
     // constructor -- initializes instance vars
-    public DLLNode( String value, DLLNode previous, DLLNode next ) {
+    public DLLNode<T><T>( T value, DLLNode<T><T> previous, DLLNode<T><T> next ) {
 	_cargo = value;
 	_nextNode = next;
 	_previousNode = previous;
@@ -20,37 +21,37 @@ public class DLLNode
 
 
     //--------------v  ACCESSORS  v--------------
-    public String getCargo() { return _cargo; }
+    public T getCargo() { return _cargo; }
 
-    public DLLNode getNext() { return _nextNode; }
+    public DLLNode<T><T> getNext() { return _nextNode; }
 
-    public DLLNode getPrevious() {return _previousNode;}
+    public DLLNode<T><T> getPrevious() {return _previousNode;}
 
-    
+
     //--------------^  ACCESSORS  ^--------------
 
 
     //--------------v  MUTATORS  v--------------
-    public String setCargo( String newCargo ) {
-	String foo = getCargo();
+    public T setCargo( T newCargo ) {
+	T foo = getCargo();
 	_cargo = newCargo;
 	return foo;
     }
 
-    public DLLNode setNext( DLLNode newNext ) {
-	DLLNode foo = getNext();
+    public DLLNode<T> setNext( DLLNode<T> newNext ) {
+	DLLNode<T> foo = getNext();
 	_nextNode = newNext;
 	return foo;
     }
 
-    public DLLNode setPrevious(DLLNode newPrev){
-        DLLNode foo = getPrevious();
+    public DLLNode<T> setPrevious(DLLNode<T> newPrev){
+        DLLNode<T> foo = getPrevious();
 	_previousNode = newPrev;
 	return foo;
     }
     //--------------^  MUTATORS  ^--------------
 
-    
+
     // override inherited toString
     public String toString() { return _cargo; }
 
@@ -62,16 +63,16 @@ public class DLLNode
 	//Below is an exercise in creating a linked list...
 
 	//Create a node
-	DLLNode first = new DLLNode( "cat", null, null );
+	DLLNode<T> first = new DLLNode<T>( "cat", null, null );
 
 	//Create a new node after the first
-	first.setNext( new DLLNode( "dog", null, null ) );
+	first.setNext( new DLLNode<T>( "dog", null, null ) );
 
 	//Create a third node after the second
-	first.getNext().setNext( new DLLNode( "cow", null, null ) );
+	first.getNext().setNext( new DLLNode<T>( "cow", null, null ) );
 
 
-	DLLNode tmp = first;
+	DLLNode<T> tmp = first;
 	while( tmp != null ) {
 	    System.out.println( tmp );
 	    tmp = tmp.getNext();
@@ -80,23 +81,22 @@ public class DLLNode
 	System.out.println("====================");
 
 	//Create a node
-	DLLNode last = new DLLNode( "cat", null, null );
+	DLLNode<T> last = new DLLNode<T>( "cat", null, null );
 
 
-	last.setPrevious( new DLLNode( "dog", null, null ) );
+	last.setPrevious( new DLLNode<T>( "dog", null, null ) );
 
 
-	last.getPrevious().setPrevious(new DLLNode("bear", null, null));
+	last.getPrevious().setPrevious(new DLLNode<T>("bear", null, null));
 
 
-	DLLNode tmp0 = last;
+	DLLNode<T> tmp0 = last;
 	while( tmp0 != null ) {
 	    System.out.println( tmp0 );
 	    tmp0 = tmp0.getPrevious();
 	}
-	   
-	
+
+
     }//end main
 
-}//end class DLLNode
-
+}//end class DLLNode<T>
