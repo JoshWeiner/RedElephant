@@ -5,27 +5,16 @@
  * Stores its data as a String
  *****************************************************/
 
-<<<<<<< HEAD
 public class DLLNode<T>
 {
     //instance vars
     private T _cargo;    //cargo may only be of type String
-    private DLLNode _nextNode; //pointer to next DLLNode
-    private DLLNode _previousNode; 
+    private DLLNode<T> _nextNode; //pointer to next DLLNode<T>
+    private DLLNode<T> _previousNode;
 
     // constructor -- initializes instance vars
-    public DLLNode( T value, DLLNode previous, DLLNode next ) {
-=======
-public class DLLNode<T><T>
-{
-    //instance vars
-    private T _cargo;    //cargo may only be of type String
-    private DLLNode<T><T> _nextNode; //pointer to next DLLNode<T>
-    private DLLNode<T><T> _previousNode;
+    public DLLNode( T value, DLLNode<T> previous, DLLNode<T> next ) {
 
-    // constructor -- initializes instance vars
-    public DLLNode<T><T>( T value, DLLNode<T><T> previous, DLLNode<T><T> next ) {
->>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 	_cargo = value;
 	_nextNode = next;
 	_previousNode = previous;
@@ -35,9 +24,9 @@ public class DLLNode<T><T>
     //--------------v  ACCESSORS  v--------------
     public T getCargo() { return _cargo; }
 
-    public DLLNode<T><T> getNext() { return _nextNode; }
+    public DLLNode<T> getNext() { return _nextNode; }
 
-    public DLLNode<T><T> getPrevious() {return _previousNode;}
+    public DLLNode<T> getPrevious() {return _previousNode;}
 
 
     //--------------^  ACCESSORS  ^--------------
@@ -75,7 +64,7 @@ public class DLLNode<T><T>
 	//Below is an exercise in creating a linked list...
 
 	//Create a node
-<<<<<<< HEAD
+
 	DLLNode<String> first = new DLLNode<String>( "cat", null, null );
 
 	//Create a new node after the first
@@ -86,18 +75,9 @@ public class DLLNode<T><T>
 
 
 	DLLNode<String> tmp = first;
-=======
-	DLLNode<T> first = new DLLNode<T>( "cat", null, null );
-
-	//Create a new node after the first
-	first.setNext( new DLLNode<T>( "dog", null, null ) );
-
-	//Create a third node after the second
-	first.getNext().setNext( new DLLNode<T>( "cow", null, null ) );
 
 
-	DLLNode<T> tmp = first;
->>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
+
 	while( tmp != null ) {
 	    System.out.println( tmp );
 	    tmp = tmp.getNext();
@@ -106,7 +86,7 @@ public class DLLNode<T><T>
 	System.out.println("====================");
 
 	//Create a node
-<<<<<<< HEAD
+
 	DLLNode<String> last = new DLLNode<String>( "cat", null, null );
 
 
@@ -117,18 +97,7 @@ public class DLLNode<T><T>
 
 
 	DLLNode<String> tmp0 = last;
-=======
-	DLLNode<T> last = new DLLNode<T>( "cat", null, null );
 
-
-	last.setPrevious( new DLLNode<T>( "dog", null, null ) );
-
-
-	last.getPrevious().setPrevious(new DLLNode<T>("bear", null, null));
-
-
-	DLLNode<T> tmp0 = last;
->>>>>>> 6a9b25e3e6150447222c63ab3f274c98ee8f9d11
 	while( tmp0 != null ) {
 	    System.out.println( tmp0 );
 	    tmp0 = tmp0.getPrevious();
