@@ -1,7 +1,7 @@
 /*
 Alvin Ye and Joshua Weiner - Red Elephant
 APCS2 - pd08
-HW
+HW #25: Generically Speaking...
 2018 - 03 - 26
 /*****************************************************
  * class DLList<T>
